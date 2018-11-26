@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PlaylistsController < ApplicationController
+class PlaylistsController < OpenReadController
   before_action :set_playlist, only: %i[show update destroy]
 
   # GET /playlists
@@ -12,14 +12,15 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/1
   def show
-    @playlists = Playlist.find(musics_params)
+    @playlists = Playlist.find(params[:id])
 
     render json: @playlist
   end
 
   # POST /playlists
   def create
-    @playlist = Playlist.new(playlist_params)
+    binding.pry
+    @playlist = current_user.playlists.build(playlist_params)
 
     if @playlist.save
       render json: @playlist, status: :created, location: @playlist

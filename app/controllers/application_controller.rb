@@ -21,6 +21,7 @@ class ApplicationController < ActionController::API
   # Use Token Authentication
   include ActionController::HttpAuthentication::Token::ControllerMethods
   def authenticate
+
     @current_user =
       authenticate_or_request_with_http_token(&AUTH_PROC)
   end
@@ -31,6 +32,7 @@ class ApplicationController < ActionController::API
   # call from unauthenticated actions that want current_user if available
   def set_current_user
     # for access to authenticate method
+
     t = ActionController::HttpAuthentication::Token
     @current_user = t.authenticate(self, &AUTH_PROC)
   end
