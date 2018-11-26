@@ -8,8 +8,3 @@ curl --include --request POST "http://localhost:4741/playlists" \
       "playlist_name": "'"${PLAYLIST}"'"
     }
   }'
-  # --data '{
-  #   "example": {
-  #     "text": "'"${TEXT}"'"
-  #   }
-  # }'
