@@ -19,7 +19,6 @@ class PlaylistsController < OpenReadController
 
   # POST /playlists
   def create
-    binding.pry
     @playlist = current_user.playlists.build(playlist_params)
 
     if @playlist.save

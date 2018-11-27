@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   resources :playlists, except: %i[new edit]
-  resources :musics, execept: %i[new edit]
+  resources :musics, except: %i[new edit]
   # RESTful routes
   resources :examples, except: %i[new edit]
 

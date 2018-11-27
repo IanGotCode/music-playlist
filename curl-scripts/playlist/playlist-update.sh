@@ -5,4 +5,4 @@ curl --include --request PATCH "http://localhost:4741/playlists/${ID}" \
 --data '{
   "playlist": {
     "playlist_name": "'"${PLAYLIST}"'"
-  }
+  }'

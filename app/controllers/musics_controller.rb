@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MusicsController < ApplicationController
+class MusicsController < OpenReadController
   before_action :set_music, only: %i[show update destroy]
 
   # GET /musics
@@ -12,12 +12,14 @@ class MusicsController < ApplicationController
 
   # GET /musics/1
   def show
+    @musics = Music.find(params[:id])
+
     render json: @music
   end
 
   # POST /musics
   def create
-    @music = Music.new(music_params)
+    @music = current_user.musics.build(music_params)
 
     if @music.save
       render json: @music, status: :created, location: @music
@@ -49,6 +51,6 @@ class MusicsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def music_params
-    params.require(:music).permit(:artist_name, :track_name)
+    params.require(:music).permit(:artist_name, :track_name, :user_id, :playlist_id)
   end
 end
