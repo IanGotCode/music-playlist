@@ -51,6 +51,6 @@ class MusicsController < OpenReadController
 
   # Only allow a trusted parameter "white list" through.
   def music_params
-    params.require(:music).permit(:artist_name, :track_name, :user_id, :playlist_id)
+    params.require(:music).permit(:artist_name, :track_name, :user_id)
   end
 end

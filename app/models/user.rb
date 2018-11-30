@@ -2,6 +2,5 @@
 
 class User < ApplicationRecord
   include Authentication
-  has_many :playlists
-  has_many :musics, :through => :playlists
+  has_many :musics
 end
